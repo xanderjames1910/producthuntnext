@@ -53,8 +53,6 @@ const NuevoProducto = () => {
 	// Context com las operaciones de CRUD de firebase
 	const { usuario, firebase } = useContext(FirebaseContext);
 
-	console.log(usuario);
-
 	async function crearProducto() {
 		// Si el usuario no está autenticado llegar al login
 		if (!usuario) {
@@ -75,6 +73,7 @@ const NuevoProducto = () => {
 				id: usuario.uid,
 				nombre: usuario.displayName,
 			},
+			haVotado: [],
 		};
 
 		// Insertar producto en la base de datos
@@ -132,7 +131,7 @@ const NuevoProducto = () => {
 									<input
 										type='text'
 										id='nombre'
-										placeholder='Tu nombre'
+										placeholder='Nombre del producto'
 										name='nombre'
 										value={nombre}
 										onChange={handleChange}
